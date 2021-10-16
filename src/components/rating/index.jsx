@@ -60,6 +60,7 @@ const Rating = ({ stars, setStars }) => {
             onMouseEnter={() => setHover(index + 1)}
             onClick={() => setStars?.(index + 1)}
             tabIndex={setStars ? 0 : -1}
+            onKeyDown={({ code }) => code === 'Space' && setStars?.(index + 1)}
           />
         )
       })}
