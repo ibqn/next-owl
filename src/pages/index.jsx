@@ -8,8 +8,9 @@ import { Tag } from 'components/tag'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from 'styles/home.module.css'
+import { withLayout } from 'components/layout'
 
-export default function Home() {
+const Home = () => {
   const [rating, setRating] = useState(3)
 
   return (
@@ -57,3 +58,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default withLayout(Home)
