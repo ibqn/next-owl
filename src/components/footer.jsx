@@ -26,7 +26,7 @@ const Root = styled.footer`
 export const Footer = () => {
   return (
     <Root>
-      <span>Next OWL © {format(new Date(), 'yyyy')} Все права защищены</span>
+      <span>Next Owl © {format(new Date(), 'yyyy')} Все права защищены</span>
       <a href="#" target="_blank">
         Пользовательское соглашение
       </a>
