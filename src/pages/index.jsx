@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { request, gql } from 'graphql-request'
 
 import { PrimaryButton, GhostButton } from 'components/button'
 import { H1 } from 'components/h-tags'
@@ -10,7 +11,7 @@ import Image from 'next/image'
 import styles from 'styles/home.module.css'
 import { withLayout } from 'components/layout'
 
-const Home = () => {
+const Home = ({ menu }) => {
   const [rating, setRating] = useState(3)
 
   return (
@@ -41,6 +42,12 @@ const Home = () => {
           </Tag>
         </p>
         <Rating stars={rating} setStars={setRating} />
+        {/*  {menu && JSON.stringify(menu, undefined, 2)} */}
+        <ul>
+          {menu?.libraries.map((category) => (
+            <li>{category.branch}</li>
+          ))}
+        </ul>
       </main>
 
       <footer className={styles.footer}>
@@ -60,3 +67,40 @@ const Home = () => {
 }
 
 export default withLayout(Home)
+
+const GET_QUERY = gql`
+  query getLibraries {
+    libraries {
+      branch
+      pages {
+        alias
+        id
+        title
+        category {
+          name
+        }
+      }
+    }
+  }
+`
+
+export const getStaticProps = async () => {
+  const endpoint = 'http://localhost:3000/api/graphql'
+  // const endpoint = '/api/graphql'
+
+  let data = {}
+
+  try {
+    data = await request(endpoint, GET_QUERY)
+
+    // console.log(JSON.stringify(data, undefined, 2))
+  } catch (error) {
+    console.error(error)
+  }
+
+  return {
+    props: {
+      menu: data,
+    },
+  }
+}
