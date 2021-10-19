@@ -2,15 +2,6 @@ import { ApolloServer, gql } from 'apollo-server-micro'
 import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core'
 import { libraries, pages } from 'data'
 
-// const typeDefs = gql`
-//   type Query {
-//     users: [User!]!
-//   }
-//   type User {
-//     name: String
-//   }
-// `
-
 // Schema definition
 const typeDefs = gql`
   # A library has a branch and books
@@ -21,7 +12,7 @@ const typeDefs = gql`
 
   # A book has a title and author
   type Page {
-    alias: String!
+    slug: String!
     title: String!
     id: String!
     category: Category!
@@ -37,14 +28,6 @@ const typeDefs = gql`
     libraries: [Library]
   }
 `
-
-// const resolvers = {
-//   Query: {
-//     users(parent, args, context) {
-//       return [{ name: 'Nextjs' }]
-//     },
-//   },
-// }
 
 const resolvers = {
   Query: {

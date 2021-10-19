@@ -73,7 +73,7 @@ const GET_QUERY = gql`
     libraries {
       branch
       pages {
-        alias
+        slug
         id
         title
         category {
