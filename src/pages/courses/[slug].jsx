@@ -29,13 +29,11 @@ export const getStaticPaths = async () => {
   const endpoint = 'http://localhost:3000/api/graphql'
   const data = await request(endpoint, GET_QUERY)
 
-  const paths = data?.libraries?.flatMap((library) =>
-    library?.pages?.map((page) => ({
-      params: { slug: page.slug },
-    }))
+  const paths = data?.libraries?.flatMap(({ pages }) =>
+    pages?.map(({ slug }) => ({ params: { slug } }))
   )
 
-  // console.log('paths', paths)
+  console.log('paths', paths)
 
   return {
     paths: paths,
