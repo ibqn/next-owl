@@ -10,6 +10,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from 'styles/home.module.css'
 import { withLayout } from 'components/layout'
+import { getGraphqlEndpoint } from 'utils'
 
 const Home = ({ menu }) => {
   const [rating, setRating] = useState(3)
@@ -45,7 +46,7 @@ const Home = ({ menu }) => {
         {/*  {menu && JSON.stringify(menu, undefined, 2)} */}
         <ul>
           {menu?.libraries.map((category) => (
-            <li>{category.branch}</li>
+            <li key={`${category.branch}`}>{category.branch}</li>
           ))}
         </ul>
       </main>
@@ -85,18 +86,11 @@ const GET_QUERY = gql`
 `
 
 export const getStaticProps = async () => {
-  const endpoint = 'http://localhost:3000/api/graphql'
-  // const endpoint = '/api/graphql'
+  const endpoint = getGraphqlEndpoint()
+  console.log('endpoint', endpoint)
 
-  let data = {}
-
-  try {
-    data = await request(endpoint, GET_QUERY)
-
-    // console.log(JSON.stringify(data, undefined, 2))
-  } catch (error) {
-    console.error(error)
-  }
+  const data = await request(endpoint, GET_QUERY)
+  // console.log(JSON.stringify(data, undefined, 2))
 
   return {
     props: {
