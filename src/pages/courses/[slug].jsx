@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { withLayout } from 'components/layout'
 import { request, gql } from 'graphql-request'
+import { getGraphqlEndpoint } from 'utils'
 
 const Course = () => {
   const router = useRouter()
@@ -24,9 +25,9 @@ const GET_QUERY = gql`
     }
   }
 `
+const endpoint = getGraphqlEndpoint()
 
 export const getStaticPaths = async () => {
-  const endpoint = 'http://localhost:3000/api/graphql'
   const data = await request(endpoint, GET_QUERY)
 
   const paths = data?.libraries?.flatMap(({ pages }) =>
@@ -42,8 +43,6 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const endpoint = 'http://localhost:3000/api/graphql'
-
   const data = await request(endpoint, GET_QUERY)
 
   // console.log(JSON.stringify(data, undefined, 2))
