@@ -9,6 +9,9 @@ const Root = styled.div`
   grid-template-columns: auto 230px minmax(320px, 1200px) auto;
   grid-template-rows: auto 1fr auto;
 
+  min-height: 100vh;
+  gap: 40px 30px;
+
   grid-template-areas:
     '. header header .'
     '. sidebar body .'
@@ -20,6 +23,8 @@ const Root = styled.div`
       'header'
       'body'
       'footer';
+
+    gap: 10px;
   }
 `
 
