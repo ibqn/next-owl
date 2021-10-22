@@ -1,11 +1,22 @@
 import styled from 'styled-components'
 import LogoIcon from './logo.svg'
+import Link from 'next/link'
 
-// const StyledLogo = styled('div')`
 const StyledLogo = styled(LogoIcon)`
   width: 159px;
   height: 44px;
-  fill: #7653fc;
+
+  fill: ${({ theme }) => theme.colors.primary};
+
+  cursor: pointer;
 `
 
-export default StyledLogo
+const Logo = () => (
+  <Link href="/">
+    <a>
+      <StyledLogo />
+    </a>
+  </Link>
+)
+
+export default Logo
