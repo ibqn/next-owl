@@ -1,9 +1,11 @@
 import styled from 'styled-components'
+import Logo from './logo'
 
 const Div = styled.div`
   grid-area: header;
   display: none;
-  background-color: beige;
+
+  margin: 15px;
 
   @media (max-width: 765px) {
     display: flex;
@@ -11,7 +13,11 @@ const Div = styled.div`
 `
 
 const Header = () => {
-  return <Div>header</Div>
+  return (
+    <Div>
+      <Logo />
+    </Div>
+  )
 }
 
 export default Header
