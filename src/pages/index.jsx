@@ -45,8 +45,8 @@ const Home = ({ menu }) => {
         <Rating stars={rating} setStars={setRating} />
         {/*  {menu && JSON.stringify(menu, undefined, 2)} */}
         <ul>
-          {menu?.libraries.map((category) => (
-            <li key={`${category.branch}`}>{category.branch}</li>
+          {menu?.libraries.map(({ branch }) => (
+            <li key={`${branch}`}>{branch}</li>
           ))}
         </ul>
       </main>
