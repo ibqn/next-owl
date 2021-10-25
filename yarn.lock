@@ -230,10 +230,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/noto-sans-kr@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/noto-sans-kr/-/noto-sans-kr-4.5.0.tgz#cfb2eb8928ec7e8ff088be4558adf28023adfcc1"
-  integrity sha512-2EFfUhkBWVjYurOHVdTbGWDqS7pbgKCcjfLhkh5iVxZFHwYbeqfnlb8l5pl1rgsLvj+lUSak2ezCydk1d4aIpA==
+"@fontsource/noto-sans-kr@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/noto-sans-kr/-/noto-sans-kr-4.5.2.tgz#1f529275e2cef4ae9d8bdeae132852b57ec33528"
+  integrity sha512-EQnXIYq5jGYkiUIX3FunMExzimMpFXWQu7U0vJ5PJO/8Gss7v31L2TOFmPzIaONevt4cxfnTr3U+0jRiHULy/w==
 
 "@graphql-tools/merge@^8.1.0":
   version "8.1.2"
