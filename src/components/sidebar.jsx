@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 import Logo from 'components/logo'
+import Search from 'components/search'
+import Menu from 'components/menu'
 
 const Div = styled.div`
   grid-area: sidebar;
@@ -16,6 +18,8 @@ const Div = styled.div`
 const Sidebar = () => (
   <Div>
     <Logo />
+    <Search />
+    <Menu />
   </Div>
 )
 
