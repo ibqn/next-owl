@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { useState } from 'react'
 
 import SearchIcon from './glass.svg'
 
@@ -46,10 +47,20 @@ const Button = styled.button`
 `
 
 const Search = () => {
+  const [search, setSearch] = useState('')
+
+  const onSearch = (event) => {
+    event.preventDefault()
+
+    console.log('search', search)
+  }
+
+  const onChange = ({ target: { value } }) => setSearch(value)
+
   return (
     <Form>
-      <Input placeholder="Поиск..." />
-      <Button>
+      <Input value={search} onChange={onChange} placeholder="Поиск..." />
+      <Button onClick={onSearch}>
         <SearchIcon />
       </Button>
     </Form>
