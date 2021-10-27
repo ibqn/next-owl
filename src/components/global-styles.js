@@ -8,7 +8,9 @@ const GlobalStyles = styled.createGlobalStyle`
     padding: 0;
     margin: 0;
 
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: ${({ theme }) => theme.fontFamily};
+
+    background: #f5f6f8;
   }
 
   a {

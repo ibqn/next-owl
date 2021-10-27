@@ -12,6 +12,7 @@ const theme = {
     green: '#007B48',
     greenLight: '#C8F8E4',
   },
+  fontFamily: `'Noto Sans KR', sans-serif`,
 }
 
 export default theme
