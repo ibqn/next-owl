@@ -1,69 +1,60 @@
-import { useState } from 'react'
+import styled from 'styled-components'
+import Link from 'next/link'
 import { request, gql } from 'graphql-request'
 
-import { PrimaryButton, GhostButton } from 'components/button'
 import { H1 } from 'components/h-tags'
+import { Title, Category, Card } from 'components/category'
 import { P1, P2, P3 } from 'components/paragraph'
-import { Rating } from 'components/rating'
-import { Tag } from 'components/tag'
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from 'styles/home.module.css'
 import { withLayout } from 'components/layout'
 import { getGraphqlEndpoint } from 'utils'
 
-const Home = ({ menu }) => {
-  const [rating, setRating] = useState(3)
+const Container = styled.section`
+  /* min-height: 100vh; */
+  padding: 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* height: 100vh; */
+`
 
+const Main = styled.main`
+  /* padding: 5rem 0; */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+`
+
+const Home = ({ menu }) => {
   return (
-    <div className={styles.container}>
+    <Container>
       <Head>
         <title>Create Next App</title>
         <meta name="description" content="Next OWL" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <H1>Welcome to Next.js!</H1>
-        <PrimaryButton arrow down>
-          кнопка
-        </PrimaryButton>
-        <GhostButton arrow>кнопка</GhostButton>
-        <P1>большой</P1>
-        <P2>средний</P2>
-        <P3>маленький</P3>
-        <p>
-          теги: <Tag>тест</Tag>
-          <Tag color="primary">тест</Tag>
-          <Tag size="m" color="red">
-            тест
-          </Tag>
-          <Tag size="m" color="green">
-            тест
-          </Tag>
-        </p>
-        <Rating stars={rating} setStars={setRating} />
+      <Main>
+        <Title />
         {/*  {menu && JSON.stringify(menu, undefined, 2)} */}
-        <ul>
-          {menu?.libraries.map(({ branch }) => (
-            <li key={`${branch}`}>{branch}</li>
-          ))}
-        </ul>
-      </main>
+        <Category>
+          {menu?.libraries.map(({ branch, pages }) => (
+            <Card key={`${branch}`}>
+              <H1>{branch}</H1>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
-    </div>
+              {pages?.map(({ slug, category: { name } }) => (
+                <Link href={slug}>
+                  <a> {name}</a>
+                </Link>
+              ))}
+            </Card>
+          ))}
+        </Category>
+      </Main>
+    </Container>
   )
 }
 

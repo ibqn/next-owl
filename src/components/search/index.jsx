@@ -38,6 +38,8 @@ const Button = styled.button`
   border: none;
   border-radius: 5px;
 
+  cursor: pointer;
+
   /* color: ${({ theme }) => theme.colors.white}; */
   background-color: ${({ theme }) => theme.colors.primary};
 
